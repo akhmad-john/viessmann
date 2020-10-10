@@ -29,9 +29,9 @@ class Product(models.Model):
 
 class ProductParameter(models.Model):
     product = models.ForeignKey(Product, on_delete=models.CASCADE)
-    name = models.CharField(max_length=40)
-    measure_unit = models.CharField(max_length=15, null=True)
-    value = models.CharField(max_length=500)
+    name = models.CharField(max_length=40, verbose_name="Название свойства")
+    measure_unit = models.CharField(max_length=15, null=True, verbose_name="Еденица измерения", blank=True)
+    value = models.TextField(max_length=500, verbose_name="Значение")
 
 
     def __str__(self):

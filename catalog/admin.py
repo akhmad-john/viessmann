@@ -9,32 +9,14 @@ class ProductGroupAdmin(admin.ModelAdmin):
     list_display = ('name', 'designation')
 
 
-# class ProductParameterForm(forms.ModelForm):
-#     measure_unit = forms.CharField()
-#
-#     def save(self, commit=True):
-#         measure_unit = self.cleaned_data.get('measure_unit', None)
-#
-#         return super(ProductParameterForm, self).save(commit=commit)
-#
-#
-#     class Meta:
-#         model = ProductParameter
-#         fields = "__all__"
-
-class ProductParameterAdmin(admin.TabularInline):
+class ProductParameterInline(admin.TabularInline):
     model = ProductParameter
 
 
 class ProductAdmin(admin.ModelAdmin):
     fields = ('productGroup', 'name', 'short_description', 'full_description', )
-    inlines = [ProductParameterAdmin]
+    inlines = [ProductParameterInline]
 
-    # fieldsets = (
-    #     (None, {
-    #        'fields': ('productGroup', 'name', 'short_description', 'full_description', 'measure_unit')
-    #     }),
-    # )
 
 
 admin.site.register(Designation)
